@@ -15,10 +15,10 @@ font = pygame.font.SysFont('Times New Roman', 34)
 seconds=1/60
 
 
-
-
 BulletSound=pygame.mixer.Sound('bullet.wav')
 CollisionSound=pygame.mixer.Sound('collision.wav')
+BulletSound.set_volume(0.1)
+CollisionSound.set_volume(0.1)
 
 class Direction(Enum):
     UP = 1
@@ -36,10 +36,8 @@ class Tank:
         self.color = color
         self.width = 40
         self.direction = Direction.RIGHT
-
         self.KEY = {d_right: Direction.RIGHT, d_left: Direction.LEFT,
-                    d_up: Direction.UP, d_down: Direction.DOWN}
-
+                     d_up: Direction.UP, d_down: Direction.DOWN}
         self.KEYSHOT=d_shot
 
 
@@ -92,7 +90,7 @@ class Bullet:
         self.direction=direction
         self.status=True
         self.distance=0
-        self.radius=10
+        self.radius=7
 
     def move(self):
         if self.direction == Direction.LEFT:
@@ -170,8 +168,8 @@ def score():
 
 
 mainloop = True
-tank1 = Tank(350,350,4,(255, 0, 0))
-tank2 = Tank(100,100,4,(0, 0, 255),pygame.K_d,pygame.K_a,pygame.K_w,pygame.K_s,pygame.K_SPACE)
+tank1 = Tank(600,100,4,(255, 0, 0))
+tank2 = Tank(100,400,4,(0, 0, 255),pygame.K_d,pygame.K_a,pygame.K_w,pygame.K_s,pygame.K_SPACE)
 
 bullet1=Bullet()
 bullet2=Bullet()
